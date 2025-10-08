@@ -25,7 +25,7 @@
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#1f2937,#0ea5a9);display:flex;align-items:center;justify-content:center;font-weight:700;color:#04111a}
     nav{display:flex;gap:12px;align-items:center}
-    .btn{background:transparent;border:1px solid rgba(230,238,246,0.06);padding:10px 14px;border-radius:10px;cursor:pointer;color:inherit;font-weight:600;backdrop-filter: blur(6px);transition:all .22s}
+    .btn{background:transparent;border:1px solid rgba(230,238,246,0.06);padding:10px 14px;border-radius:10px;cursor:pointer;color:inherit;font-weight:600;backdrop-filter: blur(6px);transition:all .22s;text-decoration:none}
     .btn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(2,6,23,0.6)}
 
     /* Hero */
@@ -69,10 +69,18 @@
     .fade-in{animation:fade .6s ease both}
     @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(2,6,23,0.78);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;opacity:0;pointer-events:none;transition:opacity .18s}
-    .lightbox.open{opacity:1;pointer-events:auto}
-    .lightbox img{max-width:90%;max-height:85%;border-radius:8px}
+    /* Lightbox CSS-only usando :target */
+    .lightbox-wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;pointer-events:none}
+    .lightbox{max-width:90%;max-height:85%;border-radius:8px;box-shadow:0 24px 60px rgba(2,6,23,0.8);transform:scale(.98);opacity:0;transition:all .18s}
+    .lightbox:focus{outline:none}
+    .lightbox-wrap:target{background:rgba(2,6,23,0.78);pointer-events:auto}
+    .lightbox-wrap:target .lightbox{opacity:1;transform:none}
+    .close{display:inline-block;margin-top:8px;padding:8px 12px;background:rgba(255,255,255,0.03);border-radius:8px;text-decoration:none;color:inherit}
+
+    /* make anchor cards focusable */
+    .model a{display:block;color:inherit;text-decoration:none}
+    .model a:focus{outline:3px solid rgba(99,102,241,0.25);border-radius:8px}
+
   </style>
 </head>
 <body>
@@ -86,10 +94,10 @@
         </div>
       </div>
       <nav>
-        <button class="btn">Modelos</button>
-        <button class="btn">Guia de compra</button>
-        <button class="btn">Destaques</button>
-        <button class="btn btn-cta">Assine</button>
+        <a class="btn" href="#models">Modelos</a>
+        <a class="btn" href="#guia">Guia de compra</a>
+        <a class="btn" href="#dest">Destaques</a>
+        <a class="btn btn-cta" href="#assine">Assine</a>
       </nav>
     </header>
 
@@ -110,8 +118,8 @@
         </div>
 
         <div style="margin-top:18px;display:flex;gap:10px">
-          <button class="btn btn-cta" onclick="document.getElementById('dest').scrollIntoView({behavior:'smooth'})">Ver destaques</button>
-          <button class="btn" onclick="alert('Obrigado por visitar!')">Contato</button>
+          <a class="btn btn-cta" href="#dest">Ver destaques</a>
+          <a class="btn" href="#contato">Contato</a>
         </div>
       </div>
 
@@ -134,34 +142,40 @@
     <main>
       <section id="models" class="card">
         <h2>Modelos em destaque</h2>
-        <p style="color:#b7c7d9;margin-top:8px">Uma seleção visual de motos populares — clique para ampliar.</p>
+        <p style="color:#b7c7d9;margin-top:8px">Uma seleção visual de motos populares — clique para ampliar (sem JavaScript).</p>
 
         <div class="grid" style="margin-top:14px">
-          <article class="model" onclick="openLightbox(this.querySelector('img'))" tabindex="0">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef" alt="Moto esportiva" loading="lazy">
-            <div class="meta">
-              <span class="tag">Esportiva</span>
-              <h3>Esportiva moderna</h3>
-              <p style="font-size:13px;color:#b7c7d9">Design agressivo e foco em performance.</p>
-            </div>
+          <article class="model">
+            <a href="#lb1">
+              <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef" alt="Moto esportiva" loading="lazy">
+              <div class="meta">
+                <span class="tag">Esportiva</span>
+                <h3>Esportiva moderna</h3>
+                <p style="font-size:13px;color:#b7c7d9">Design agressivo e foco em performance.</p>
+              </div>
+            </a>
           </article>
 
-          <article class="model" onclick="openLightbox(this.querySelector('img'))" tabindex="0">
-            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghijkl" alt="Naked" loading="lazy">
-            <div class="meta">
-              <span class="tag">Naked</span>
-              <h3>Naked urbana</h3>
-              <p style="font-size:13px;color:#b7c7d9">Versatilidade no dia a dia.</p>
-            </div>
+          <article class="model">
+            <a href="#lb2">
+              <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghijkl" alt="Naked" loading="lazy">
+              <div class="meta">
+                <span class="tag">Naked</span>
+                <h3>Naked urbana</h3>
+                <p style="font-size:13px;color:#b7c7d9">Versatilidade no dia a dia.</p>
+              </div>
+            </a>
           </article>
 
-          <article class="model" onclick="openLightbox(this.querySelector('img'))" tabindex="0">
-            <img src="https://images.unsplash.com/photo-1541447273001-6d4d6f1d9e63?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=mnopqr" alt="Touring" loading="lazy">
-            <div class="meta">
-              <span class="tag">Touring</span>
-              <h3>Touring & viagens</h3>
-              <p style="font-size:13px;color:#b7c7d9">Conforto para longas distâncias.</p>
-            </div>
+          <article class="model">
+            <a href="#lb3">
+              <img src="https://images.unsplash.com/photo-1541447273001-6d4d6f1d9e63?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=mnopqr" alt="Touring" loading="lazy">
+              <div class="meta">
+                <span class="tag">Touring</span>
+                <h3>Touring & viagens</h3>
+                <p style="font-size:13px;color:#b7c7d9">Conforto para longas distâncias.</p>
+              </div>
+            </a>
           </article>
         </div>
       </section>
@@ -184,7 +198,7 @@
         </div>
       </section>
 
-      <section class="card" style="margin-top:18px">
+      <section id="guia" class="card" style="margin-top:18px">
         <h2>Guia rápido de compra</h2>
         <ol style="margin-top:8px;color:#b7c7d9;padding-left:18px">
           <li>Defina o uso: cidade, estrada ou pista.</li>
@@ -200,30 +214,27 @@
     </footer>
   </div>
 
-  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-    <img id="lightboxImg" src="" alt="Ampliação">
+  <!-- Lightbox CSS-only: cada imagem tem um fragmento (#lb1, #lb2, etc) -->
+  <div id="lb1" class="lightbox-wrap" aria-hidden="true">
+    <div class="lightbox">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef" alt="Esportiva ampliada">
+      <div style="text-align:center"><a class="close" href="#models">Fechar</a></div>
+    </div>
   </div>
 
-  <script>
-    function openLightbox(imgEl){
-      if(!imgEl) return;
-      const lb = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightboxImg');
-      lbImg.src = imgEl.src;
-      lb.classList.add('open');
-    }
-    function closeLightbox(e){
-      if(e.target.id === 'lightbox' || e.target.id === 'lightboxImg'){
-        document.getElementById('lightbox').classList.remove('open');
-      }
-    }
+  <div id="lb2" class="lightbox-wrap" aria-hidden="true">
+    <div class="lightbox">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghijkl" alt="Naked ampliada">
+      <div style="text-align:center"><a class="close" href="#models">Fechar</a></div>
+    </div>
+  </div>
 
-    // Acessibilidade: abrir com Enter quando article focado
-    document.querySelectorAll('.model').forEach(el=>{
-      el.addEventListener('keydown', (ev)=>{
-        if(ev.key === 'Enter') el.click();
-      });
-    });
-  </script>
+  <div id="lb3" class="lightbox-wrap" aria-hidden="true">
+    <div class="lightbox">
+      <img src="https://images.unsplash.com/photo-1541447273001-6d4d6f1d9e63?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&s=mnopqr" alt="Touring ampliada">
+      <div style="text-align:center"><a class="close" href="#models">Fechar</a></div>
+    </div>
+  </div>
+
 </body>
 </html>
