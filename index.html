@@ -2,199 +2,228 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Paixão por Motos — S1000RR e outras máquinas</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Paixão por Motos — S1000RR & Mais</title>
+  <meta name="description" content="Site sobre motos: notícias, modelos e destaque para a BMW S1000RR." />
   <style>
-    :root{
-      --bg:#0b0f14; --card:#0f1720; --accent:#ff4d4d; --muted:#9aa4b2; --glass: rgba(255,255,255,0.03);
+    /* Reset simples */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,#0b0f13 0%, #0f1720 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:24px;
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#e6eef6;background:linear-gradient(180deg,#071017 0%, #07131a 60%);-webkit-font-smoothing:antialiased}
-    header{backdrop-filter: blur(6px);background:linear-gradient(90deg, rgba(255,77,77,0.06), rgba(0,0,0,0.06));position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,0.03)}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    nav{display:flex;gap:18px;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#ff7a7a);display:flex;align-items:center;justify-content:center;color:#07131a;font-weight:700;box-shadow:0 6px 18px rgba(255,77,77,0.12)}
-    .navlinks{display:flex;gap:12px;align-items:center}
-    .navlinks a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
-    .navlinks a:hover{color:#fff;background:var(--glass)}
-    .hero{display:flex;gap:24px;align-items:center;padding:48px 0}
-    .hero-left{flex:1}
-    .hero-right{flex:1}
-    h1{font-size:32px;margin:0 0 12px;color:#fff}
-    p.lead{color:var(--muted);line-height:1.6;margin:0 0 20px}
-    .cta{display:inline-block;background:var(--accent);color:#07131a;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(255,77,77,0.12);transition:transform .18s}
-    .cta:hover{transform:translateY(-3px)}
+    .container{max-width:1100px;margin:0 auto}
 
-    /* card grid */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:20px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-    .card h3{margin:0 0 8px;color:#fff}
-    .card p{color:var(--muted);margin:0}
+    /* Topbar */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#1f2937,#0ea5a9);display:flex;align-items:center;justify-content:center;font-weight:700;color:#04111a}
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{background:transparent;border:1px solid rgba(230,238,246,0.06);padding:10px 14px;border-radius:10px;cursor:pointer;color:inherit;font-weight:600;backdrop-filter: blur(6px);transition:all .22s}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(2,6,23,0.6)}
 
-    /* S1000RR spotlight */
-    .spotlight{display:flex;gap:20px;align-items:center;padding:22px;margin-top:22px;background:linear-gradient(90deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .spot-left{flex:1}
-    .specs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
-    .spec{background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;color:var(--muted);font-weight:600}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:16px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+    h1{font-size:28px;margin-bottom:8px}
+    p.lead{color:#b7c7d9}
 
-    img.hero-bike{width:100%;border-radius:12px;box-shadow:0 20px 50px rgba(2,6,23,0.65)}
+    /* Highlights */
+    .features{display:flex;gap:12px;margin-top:16px}
+    .feature{flex:1;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.02)}
 
-    footer{padding:28px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,0.02);margin-top:30px}
+    /* Cards list */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:22px}
+    .model{overflow:hidden;border-radius:12px}
+    .model img{width:100%;height:160px;object-fit:cover;display:block}
+    .model .meta{padding:12px}
+    .model h3{margin-bottom:6px}
+    .tag{display:inline-block;padding:6px 8px;border-radius:999px;font-size:12px;background:rgba(14,165,166,0.12);color:#9fe0df}
 
-    /* responsive */
-    @media(max-width:820px){.hero{flex-direction:column}.navlinks{display:none}.menu-toggle{display:block}}
-    .menu-toggle{display:none;background:none;border:0;color:var(--muted);font-weight:700}
+    /* S1000RR destaque */
+    .s1000rr{display:flex;gap:18px;align-items:flex-start}
+    .s1000rr img{width:360px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .specs{flex:1}
+    .specs ul{margin-top:8px;list-style:none;padding-left:14px}
+    .specs li{margin-bottom:8px;color:#cfe7ff}
 
-    /* small micro-animations */
-    .fade-in{opacity:0;transform:translateY(8px);animation:enter .7s forwards}
-    @keyframes enter{to{opacity:1;transform:none}}
+    /* Footer */
+    footer{margin-top:28px;text-align:center;color:#9aa9ba;padding:18px}
+
+    /* Responsividade */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .s1000rr{flex-direction:column}
+      .s1000rr img{width:100%}
+    }
+
+    /* Micro animações */
+    .btn-cta{background:linear-gradient(90deg,#06b6d4,#7c3aed);border:none;color:#021018}
+    .btn-cta:hover{filter:brightness(1.05);transform:translateY(-4px)}
+    .fade-in{animation:fade .6s ease both}
+    @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(2,6,23,0.78);display:flex;align-items:center;justify-content:center;padding:20px;z-index:60;opacity:0;pointer-events:none;transition:opacity .18s}
+    .lightbox.open{opacity:1;pointer-events:auto}
+    .lightbox img{max-width:90%;max-height:85%;border-radius:8px}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <div style="font-weight:700">MOTO & RIDE</div>
+          <div style="font-size:12px;color:#9aa9ba">Tudo sobre motocicletas</div>
+        </div>
+      </div>
       <nav>
-        <div class="brand">
-          <div class="logo">M</div>
-          <div>
-            <div style="font-weight:700;color:#fff">Paixão por Motos</div>
-            <div style="font-size:12px;color:var(--muted)">notícias, modelos e curiosidades</div>
-          </div>
-        </div>
-        <div class="navlinks">
-          <a href="#home">Início</a>
-          <a href="#modelos">Modelos</a>
-          <a href="#spotlight">S1000RR</a>
-          <a href="#contato">Contato</a>
-        </div>
-        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+        <button class="btn">Modelos</button>
+        <button class="btn">Guia de compra</button>
+        <button class="btn">Destaques</button>
+        <button class="btn btn-cta">Assine</button>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
-    <section id="home" class="hero">
-      <div class="hero-left fade-in">
-        <h1>Velocidade, design e tecnologia sobre duas rodas</h1>
-        <p class="lead">Explore o mundo das motocicletas: desde modelos esportivos e naked até clássicas e aventureiras. Notícias, análises e especificações técnicas para apaixonados por toda a parte.</p>
-        <a href="#spotlight" class="cta">Ver destaque: S1000RR</a>
+    <section class="hero">
+      <div class="card fade-in">
+        <h1>Paixão por Motos</h1>
+        <p class="lead">Notícias, análises e guias para quem vive sobre duas rodas. Do passeio de fim de semana às pistas — inspire-se, aprenda e escolha sua próxima moto.</p>
 
-        <div class="grid" style="margin-top:22px">
-          <article class="card">
-            <h3>Esportivas</h3>
-            <p>Máquinas focadas em performance e aerodinâmica, ideais para pista e piloto que busca precisão e potência.</p>
-          </article>
-          <article class="card">
-            <h3>Naked</h3>
-            <p>Sem carenagem, design agressivo e street-friendly — combinação de conforto e atitude.</p>
-          </article>
-          <article class="card">
-            <h3>Aventureiras</h3>
-            <p>Projetadas para estrada e off-road, com autonomia, suspensão de curso longo e ergonomia para viagens extensas.</p>
-          </article>
-          <article class="card">
-            <h3>Clássicas</h3>
-            <p>Modelos atemporais que privilegiam estética e sensação de pilotagem relaxada e autêntica.</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="hero-right fade-in">
-        <!-- imagem genérica de moto (externa) -->
-        <img class="hero-bike" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=2f2d8b3f8c4b7b9f9c1d7e2b4c9a1a3d" alt="Moto esportiva"/>
-      </div>
-    </section>
-
-    <section id="modelos" class="fade-in">
-      <h2 style="color:#fff;margin-top:18px">Modelos em destaque</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>BMW S1000RR</h3>
-          <p>Superbike de alto rendimento da BMW Motorrad: tecnologia de ponta, eletrônica avançada e um motor que entrega aceleração e velocidade para pistas e trechos rápidos.</p>
-        </div>
-        <div class="card">
-          <h3>Yamaha R1</h3>
-          <p>Referência entre esportivas, com motor crossplane, eletrônica e chassi equilibrado.</p>
-        </div>
-        <div class="card">
-          <h3>Kawasaki Ninja</h3>
-          <p>Conhecida pela combinação potência-preço e comportamento nervoso, muito apreciada por amantes de velocidade.</p>
-        </div>
-        <div class="card">
-          <h3>Honda CB1000R</h3>
-          <p>Naked de categoria média-alta, pesa na entrega de torque e conforto para uso diário.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="spotlight" class="fade-in" style="margin-top:14px">
-      <h2 style="color:#fff">Spotlight: BMW S1000RR</h2>
-      <div class="spotlight">
-        <div class="spot-left">
-          <p style="margin:0;color:var(--muted)">A BMW S1000RR é uma superbike que mistura eletrônica fina, aerodinâmica e um motor em linha de alta potência. Concebida para desempenho extremo em pistas e estradas, ela é frequentemente citada como referência na categoria das 1000cc esportivas.</p>
-
-          <div class="specs" style="margin-top:12px">
-            <div class="spec"><strong>Motor:</strong> 4 cilindros em linha, 999 cc</div>
-            <div class="spec"><strong>Potência:</strong> alta faixa (modelo depende do ano)</div>
-            <div class="spec"><strong>Eletrônica:</strong> modos de pilotagem, controle de tração, quickshifter</div>
-            <div class="spec"><strong>Chassi:</strong> quadro leve e suspensão ajustável</div>
+        <div class="features" style="margin-top:18px">
+          <div class="feature">
+            <strong>Comparativos</strong>
+            <div style="font-size:13px;color:#b7c7d9;margin-top:6px">Análises lado a lado entre naked, esportivas e touring.</div>
           </div>
-
-          <p style="margin-top:12px;color:var(--muted)">Observação: especificações detalhadas variam conforme o ano e a versão (ex.: M Package, Competition). Para dados exatos do modelo/ano, consulte a concessionária BMW ou a ficha técnica oficial.</p>
-
-          <a class="cta" href="#contato" style="margin-top:12px;display:inline-block">Quero saber mais</a>
+          <div class="feature">
+            <strong>Guia de manutenção</strong>
+            <div style="font-size:13px;color:#b7c7d9;margin-top:6px">Dicas práticas para manter sua moto sempre pronta.</div>
+          </div>
         </div>
-        <div style="width:380px;flex-shrink:0">
-          <img alt="BMW S1000RR" style="width:100%;border-radius:10px" src="https://images.unsplash.com/photo-1561857131-8f3b47b68b22?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=3cfbd6d6f5a7f2f0a1c4b2a6a8e1f4b2"/>
+
+        <div style="margin-top:18px;display:flex;gap:10px">
+          <button class="btn btn-cta" onclick="document.getElementById('dest').scrollIntoView({behavior:'smooth'})">Ver destaques</button>
+          <button class="btn" onclick="alert('Obrigado por visitar!')">Contato</button>
         </div>
       </div>
+
+      <aside class="card fade-in" aria-label="Destaques Rápidos">
+        <h2 style="margin-bottom:8px">Últimos destaques</h2>
+        <div style="font-size:13px;color:#b7c7d9">Lançamentos, pistas e tecnologia aplicada às duas rodas.</div>
+        <div style="margin-top:12px">
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+            <div style="width:10px;height:10px;background:#34d399;border-radius:50%"></div>
+            <div style="font-size:13px">Novas eletrônicas para pilotagem segura</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+            <div style="width:10px;height:10px;background:#60a5fa;border-radius:50%"></div>
+            <div style="font-size:13px">Comparativo: superbikes 1000cc</div>
+          </div>
+        </div>
+      </aside>
     </section>
 
-    <section id="contato" class="fade-in" style="margin-top:20px">
-      <h2 style="color:#fff">Fale com a gente</h2>
-      <p style="color:var(--muted)">Tem alguma dica, pergunta sobre modelos ou quer mandar fotos da sua moto? Preencha abaixo e a gente responde.</p>
-      <form style="margin-top:12px;display:grid;gap:8px;max-width:520px">
-        <input placeholder="Seu nome" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff"/>
-        <input placeholder="Email" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff"/>
-        <textarea placeholder="Mensagem" rows="4" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff"></textarea>
-        <button type="button" onclick="alert('Obrigado! (formulário fictício)')" style="padding:12px;border-radius:10px;border:0;background:var(--accent);font-weight:700">Enviar</button>
-      </form>
-    </section>
+    <main>
+      <section id="models" class="card">
+        <h2>Modelos em destaque</h2>
+        <p style="color:#b7c7d9;margin-top:8px">Uma seleção visual de motos populares — clique para ampliar.</p>
 
-  </main>
+        <div class="grid" style="margin-top:14px">
+          <article class="model" onclick="openLightbox(this.querySelector('img'))" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef" alt="Moto esportiva" loading="lazy">
+            <div class="meta">
+              <span class="tag">Esportiva</span>
+              <h3>Esportiva moderna</h3>
+              <p style="font-size:13px;color:#b7c7d9">Design agressivo e foco em performance.</p>
+            </div>
+          </article>
 
-  <footer>
-    <div class="container">
-      <small>© <span id="ano"></span> Paixão por Motos — criado com ❤️</small>
-    </div>
-  </footer>
+          <article class="model" onclick="openLightbox(this.querySelector('img'))" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghijkl" alt="Naked" loading="lazy">
+            <div class="meta">
+              <span class="tag">Naked</span>
+              <h3>Naked urbana</h3>
+              <p style="font-size:13px;color:#b7c7d9">Versatilidade no dia a dia.</p>
+            </div>
+          </article>
+
+          <article class="model" onclick="openLightbox(this.querySelector('img'))" tabindex="0">
+            <img src="https://images.unsplash.com/photo-1541447273001-6d4d6f1d9e63?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=mnopqr" alt="Touring" loading="lazy">
+            <div class="meta">
+              <span class="tag">Touring</span>
+              <h3>Touring & viagens</h3>
+              <p style="font-size:13px;color:#b7c7d9">Conforto para longas distâncias.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="dest" class="card" style="margin-top:18px">
+        <h2>Destaque: BMW S1000RR</h2>
+        <div class="s1000rr" style="margin-top:12px">
+          <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=xyz" alt="BMW S1000RR">
+          <div class="specs">
+            <p style="color:#b7c7d9">A <strong>BMW S1000RR</strong> é uma superbike referência no segmento de 1000cc — desenvolvida para entregar desempenho de pista com soluções eletrônicas de topo. Muito utilizada tanto por entusiastas como por pilotos de pista, a S1000RR é famosa pelo conjunto equilibrado entre chassi, motor e eletrônica.</p>
+
+            <ul>
+              <li><strong>Tipo:</strong> Superbike / 1000cc</li>
+              <li><strong>Foco:</strong> Alta performance e pilotagem esportiva</li>
+              <li><strong>Recursos notáveis:</strong> Múltiplos modos de pilotagem, controle de tração e pacote eletrônico avançado</li>
+            </ul>
+
+            <p style="margin-top:8px;color:#cfe7ff">Quer que eu adicione especificações técnicas detalhadas (potência, torque, peso, eletrônica por ano/modelo)? Posso inserir uma tabela técnica com fonte para cada dado.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:18px">
+        <h2>Guia rápido de compra</h2>
+        <ol style="margin-top:8px;color:#b7c7d9;padding-left:18px">
+          <li>Defina o uso: cidade, estrada ou pista.</li>
+          <li>Verifique câmbio, manutenção e disponibilidade de peças.</li>
+          <li>Teste a ergonomia: conforto é essencial em viagens longas.</li>
+          <li>Considere seguro e impostos no orçamento.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <div>© 2025 MOTO & RIDE • Feito com <span style="color:#ff6b6b">❤</span> por entusiastas</div>
+    </footer>
+  </div>
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <img id="lightboxImg" src="" alt="Ampliação">
+  </div>
 
   <script>
-    // script pequeno para ícone de menu e ano no rodapé
-    document.getElementById('ano').textContent = new Date().getFullYear();
+    function openLightbox(imgEl){
+      if(!imgEl) return;
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      lbImg.src = imgEl.src;
+      lb.classList.add('open');
+    }
+    function closeLightbox(e){
+      if(e.target.id === 'lightbox' || e.target.id === 'lightboxImg'){
+        document.getElementById('lightbox').classList.remove('open');
+      }
+    }
 
-    const toggle = document.querySelector('.menu-toggle');
-    const navlinks = document.querySelector('.navlinks');
-    toggle && toggle.addEventListener('click', ()=>{
-      if(navlinks.style.display === 'flex') navlinks.style.display = 'none'; else navlinks.style.display = 'flex';
+    // Acessibilidade: abrir com Enter quando article focado
+    document.querySelectorAll('.model').forEach(el=>{
+      el.addEventListener('keydown', (ev)=>{
+        if(ev.key === 'Enter') el.click();
+      });
     });
-
-    // animação simples de fade-in em elementos
-    document.querySelectorAll('.fade-in').forEach((el,i)=>{
-      el.style.animationDelay = (i*120)+'ms';
-    });
-
-    // smooth scroll para links internos
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        const href = a.getAttribute('href');
-        if(href.length>1){
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({behavior:'smooth'});
-        }
-      })
-    })
   </script>
 </body>
 </html>
